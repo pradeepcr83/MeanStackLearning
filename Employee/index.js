@@ -3,6 +3,15 @@ var http = require('http');
 var employeeService = require('./lib/employees');
 var responder = require('./lib/responseGenerator');
 var staticFile = responder.staticFile('/public');
+Array.prototype.find = function (predicate) {
+  for (var i = 0, value; i < this.length; i++) {
+    value = this[i];
+    if (predicate.call(this, value))
+      return value;
+  }
+  return undefined;
+}
+
 http.createServer(function(req, res) {
    var url;
     req.method = req.method.toUpperCase();
@@ -28,7 +37,7 @@ http.createServer(function(req, res) {
             if(error) {
                 return responder.send500(error,empData);
             }
-            if(!data) {
+            if(!empData) {
                 return responder.send404(res);
             }
             responder.sendJson(empData,res);

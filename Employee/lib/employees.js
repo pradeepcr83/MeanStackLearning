@@ -1,3 +1,5 @@
+var employeeDb = require('../database/employeesJ.json')
+
 exports.getEmployees = getEmployees;
 exports.getEmployee = getEmployee;
 function getEmployees(callback){
