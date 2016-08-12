@@ -1,7 +1,9 @@
 
 var http = require('http');
+require('./lib/connection');
 var employeeService = require('./lib/employees');
 var responder = require('./lib/responseGenerator');
+
 var staticFile = responder.staticFile('/public');
 Array.prototype.find = function (predicate) {
   for (var i = 0, value; i < this.length; i++) {
@@ -23,6 +25,7 @@ http.createServer(function(req, res) {
         return res.end(req.method + 'is not implemented by this server');
     }
     if(url = /^\/employees$/i.exec(req.url)){
+		console.log("************* ") 
         employeeService.getEmployees(function(error, empData){
             if(error) {
                 return responder.send500(error,res);
@@ -31,7 +34,7 @@ http.createServer(function(req, res) {
         })
         //res.writeHead(200);
         //res.end('employee list');
-    }
+    }	
     else if (url = /^\/employees\/(\d+)$/i.exec(req.url)){
         employeeService.getEmployee(url[1] ,function(error, empData){
             if(error) {
