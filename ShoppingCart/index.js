@@ -6,12 +6,20 @@ MongoClient.connect(uri, function(error, db){
 		console.log(error);
 		process.exit(1);
 	}
-	db.collection('sample').insert({x:1}, function(error,result) {
+	
+	docToInsert = {
+		name:'jaws',
+		rating:'PG',
+		year:1978,
+		director:"Steven Spielberg"
+	}
+	
+	db.collection('movies').insert(docToInsert, function(error,result) {
 	if(error){
 		console.log(error);
 		process.exit(1);
 	}
-	db.collection('sample').find().toArray(function(error, docs) {
+	db.collection('movies').find().toArray(function(error, docs) {
 	if(error){
 		console.log(error);
 		process.exit(1);
