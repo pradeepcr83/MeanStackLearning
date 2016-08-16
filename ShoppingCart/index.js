@@ -11,15 +11,21 @@ MongoClient.connect(uri, function(error, db){
 		name:'jaws',
 		rating:'PG',
 		year:1978,
-		director:"Steven Spielberg"
-	}
+		director:"Steven Spielberg",
+		rating:{
+		 	critics:78,
+			audience:80
+		},
+		screenplay: ["Tom",'John']
+	};
 	
 	db.collection('movies').insert(docToInsert, function(error,result) {
 	if(error){
 		console.log(error);
 		process.exit(1);
 	}
-	db.collection('movies').find().toArray(function(error, docs) {
+	var query = {year:1978};
+	db.collection('movies').find(query).toArray(function(error, docs) {
 	if(error){
 		console.log(error);
 		process.exit(1);
