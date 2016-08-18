@@ -5,10 +5,12 @@ module.exports = function(wagner) {
 	
 	var Category = mongoose.model('Category', require('./category'), 'categories');
 	var Product = mongoose.model('Product', require('./products'), 'products');
+	var User = mongoose.model('User', require('./user'), 'user');
 	
 	var models ={
 		Category:Category,
-		Product:Product
+		Product:Product,
+		User:User
 	};
 	_.each(models, function(value, key) {
 		wagner.factory(key,function() {

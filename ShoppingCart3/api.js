@@ -19,7 +19,7 @@ module.exports= function(wagner) {
 			exec(handlerMany.bind(null,'products',res));
 			
 		}
-	}));
+	}));*/
 	
 	
 	api.put('/me/cart', wagner.invoke(function(User) {
@@ -38,7 +38,7 @@ module.exports= function(wagner) {
 			return res.json({user:user});
 			});
 		};
-	}));*/
+	}));
 	
 	api.get('/me', function(req,res) {
 		if(!req.user) {
