@@ -8,7 +8,7 @@ module.exports= function(wagner) {
 	
 	api.use(bodyparser.json());
 	
-	/*api.get('/product/text/:query', wagner.invoke(function(product) {
+	api.get('/product/text/:query', wagner.invoke(function(Product) {
 		return function(req, res) {
 			Product.
 				find(
@@ -19,7 +19,7 @@ module.exports= function(wagner) {
 			exec(handlerMany.bind(null,'products',res));
 			
 		}
-	}));*/
+	}));
 	
 	
 	api.put('/me/cart', wagner.invoke(function(User) {
