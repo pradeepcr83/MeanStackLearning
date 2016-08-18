@@ -5,7 +5,6 @@ var responder = require('./lib/responseGenerator');
 var staticFile = responder.staticFile('/public');
 
 
-
 Array.prototype.find = function (predicate) {
   for (var i = 0, value; i < this.length; i++) {
     value = this[i];
@@ -23,7 +22,7 @@ http.createServer(function (req, res) {
   // In case the client uses lower case for methods.
   req.method = req.method.toUpperCase();
   console.log(req.method + ' ' + req.url);
-
+  console.log('*********' + _url);
   if (req.method !== 'GET') {
     res.writeHead(501, {
       'Content-Type': 'text/plain'
